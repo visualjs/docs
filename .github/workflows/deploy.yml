@@ -1,0 +1,45 @@
+name: Deploy
+on:
+  push:
+    branches:
+      - main  # default branch
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - name: Cache NPM dependencies
+        uses: actions/cache@v2
+        with:
+          path: node_modules
+          key: ${{ runner.OS }}-npm-cache
+          restore-keys: |
+            ${{ runner.OS }}-npm-cache
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy
+        env:
+          ACTION_DEPLOY_KEY: ${{ secrets.DEPLOY_PRI_KEY }}
+          GIT_USER: ${{ secrets.GIT_USER }}
+          GIT_EMAIL: ${{ secrets.GIT_EMAIL }}
+        run: |
+          mkdir -p ~/.ssh/
+          echo "$ACTION_DEPLOY_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          cd ./build && git init && git add .
+          git config user.name $GIT_USER
+          git config user.email $GIT_EMAIL
+          git add .
+          git commit -m "GitHub Actions Auto Builder at $(date +'%Y-%m-%d %H:%M:%S')"
+          git remote add origin git@github.com:visualjs/visualjs.github.io.git
+          git branch -M main
+          git push --force --quiet -u origin main
+          

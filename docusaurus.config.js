@@ -84,7 +84,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/palenight');
       },
       footer: {
         style: 'dark',
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} VisualJS, Inc.`,
       },
       prism: {
         theme: lightCodeTheme,
