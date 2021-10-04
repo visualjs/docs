@@ -1,0 +1,80 @@
+---
+title: 行样式
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+可以通过以下方式实现自定义行的样式：
+
+- Row Style: 为行提供 CSS 样式。
+- Row Class: 为行提供 CSS 类。
+
+## Row Style
+
+可以通过以下方式为网格中的行添加 CSS 样式：
+
+### rowStyle
+
+`rowStyle` 应用于所有行。 值为键（样式名称）和值（样式值）的对象。
+
+```typescript
+export interface GridOptions {
+    ...
+    // providing a CSS style for the rows.
+    rowStyle?: JSXInternal.CSSProperties;
+    ...
+}
+```
+
+### getRowStyle
+
+`rowStyle` 的回调版本，可用于分别为不同行设置不同样式。 函数应该返回一个 CSS 值的对象。
+
+```typescript
+export interface GridOptions {
+    ...
+    // callback version of property rowStyle to set style for each row individually.
+    // function should return an object of CSS values.
+    getRowStyle?: (params: RowClassParams) => JSXInternal.CSSProperties;
+    ...
+}
+```
+
+### 示例
+
+<Codesandbox id="row-style-myl8r" title="row-style" />
+
+## Row Class
+
+可以通过以下方式为网格中的行添加 CSS 类：
+
+### rowClass
+
+所有行的 CSS 类。 值为字符串数组（类名数组）。
+
+```typescript
+export interface GridOptions {
+    ...
+    // CSS class(es) for all rows. provide an array of strings (array of class names).
+    rowClass?: string[];
+    ...
+}
+```
+
+### getRowClass
+
+`rowClass` 的回调版本，可用于分别为不同行设置不同类。 函数应返回字符串数组（类名数组）。
+
+```typescript
+export interface GridOptions {
+    ...
+    // callback version of property rowClass to set class(es) for each row individually.
+    // function should return an array of strings (array of class names).
+    getRowClass?: (params: RowClassParams) => string[];
+    ...
+}
+```
+
+### 示例
+
+<Codesandbox id="row-class-06v4v" title="row-class" />

@@ -1,0 +1,79 @@
+---
+title: 交互
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+## API
+
+当我们创建 `Grid` 实例后，就可以通过 `Grid` 示例提供的对外 `API` 对网格的数据进行获取或修改。
+
+下面是一个与网格通过 `API` 进行交互的实例。
+
+<Codesandbox id="interactive-3pjjo" title="interactive" />
+
+详细的 API 文档请看[这里](../api)。
+
+## Events
+
+通过对网格的事件进行监听，我们可以监控到网格数据或者UI的变化。
+事件的绑定需要通过 `grid` 实例上的 `on` 方法。
+
+<Codesandbox id="events-mgq6y" title="events" />
+
+目前事件分为两种：
+
+1. UI 事件
+2. 数据事件
+
+### UI 事件
+
+在上面的示例中我们使用下列方法进行 UI 事件的监听：
+
+```typescript
+const disableRow04AndColumnA = (cell: CellPosition) => {
+  if (cell.row === "r_04" || cell.column === "A") {
+    return false;
+  }
+};
+
+grid.on("beforeCellDbClicked", disableRow04AndColumnA);
+grid.on("beforeCellMouseDown", disableRow04AndColumnA);
+grid.on("beforeCellMouseMove", disableRow04AndColumnA);
+```
+
+UI 事件支持返回一个 `boolean` 值来阻止表格的默认行为，上述的代码阻止了第四行和第一列单元格的单击、双击和移动事件，因此第四行和第一列的单元格将不能像其他单元格一样被选择，激活等。
+但 UI 事件并不能阻止直接通过 `Api` 进行的数据操作，因此通过下方的 `Select Row 04` 按钮依旧可以选择第四行。
+
+同样，示例中还演示了监听表格的键盘事件，你可以利用这个方法为表格增加事件快捷键绑定。
+
+```typescript
+grid.on("beforeKeyDown", (ev) => {
+  const modifiers = ["Shift", "Control", "Meta", "Alt"];
+  let text = modifiers.indexOf(ev.key) === -1 ? ev.key : "";
+  if (ev.ctrlKey || ev.metaKey) {
+    text = "Ctrl + " + text;
+  }
+
+  if (ev.shiftKey) {
+    text = "Shift + " + text;
+  }
+
+  if (ev.altKey) {
+    text = "Alt + " + text;
+  }
+
+  statusbar.innerText = text;
+});
+```
+
+### 数据事件
+
+数据事件指底层数据被修改时触发的事件，例如上面的示例中我们使用下列方法监听单元格数据的变动：
+
+```typescript
+grid.on("cellValueChanged", (cell, value) => {
+  const text = `[${cell?.row}, ${cell?.column}] value changed: ${value}`;
+  statusbar.innerText = text;
+});
+```

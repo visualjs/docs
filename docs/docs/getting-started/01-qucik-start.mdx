@@ -1,0 +1,139 @@
+---
+title: 快速开始
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+## 下载安装
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'npm', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+
+```bash
+npm i @visualjs/grid
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```bash
+yarn add @visualjs/grid
+```
+
+  </TabItem>
+</Tabs>
+
+如果你想要使用最新的测试版代码请在安装时指定 `@next` 标签。 
+
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    {label: 'npm', value: 'npm'},
+    {label: 'Yarn', value: 'yarn'},
+  ]}>
+  <TabItem value="npm">
+
+```bash
+npm i @visualjs/grid@next
+```
+
+  </TabItem>
+  <TabItem value="yarn">
+
+```bash
+yarn add @visualjs/grid@next
+```
+
+  </TabItem>
+</Tabs>
+
+## 快速使用
+
+### 创建表格容器
+
+```html
+<div id="app" class="v-grid-default-theme"></div>
+```
+
+你需要为容器指定一个主题的 `className`，`v-grid-default-theme` 是表格库内置的一套主题，对应的 `css` 路径在 `@visualjs/grid/dist/themes/default.css`，另一个内置的主题是 `v-grid-energetic-theme`，对应的 `css` 路径在 `@visualjs/grid/dist/themes/energetic.css`。
+
+### 引入 JavaScript 和 CSS
+
+```typescript
+import { Grid } from "@visualjs/grid";
+import "@visualjs/grid/dist/style.css";
+import "@visualjs/grid/dist/themes/default.css";
+```
+
+我们需要同时引入表格库默认样式和主题样式。
+
+### 初始化网格
+
+以下代码创建了一个网格，第一个参数是网格的容器，第二个参数是网格的选项。
+
+```typescript
+const container = document.getElementById("app");
+const grid = new Grid(container, {
+  rows: [
+    { id: "r_01", A: "A-01", B: "B-01", C: "C-01", D: "D-01", E: "E-01" },
+    { id: "r_02", A: "A-02", B: "B-02", C: "C-02", D: "D-02", E: "E-02" },
+    { id: "r_03", A: "A-03", B: "B-03", C: "C-03", D: "D-03", E: "E-03" },
+    { id: "r_04", A: "A-04", B: "B-04", C: "C-04", D: "D-04", E: "E-04" }
+  ],
+  columns: [
+    { field: "A", headerName: "A", resizable: true, width: 100 },
+    { field: "B", headerName: "B", resizable: true, width: 100 },
+    { field: "C", headerName: "C", resizable: true, width: 100 },
+    { field: "D", headerName: "D", resizable: true, width: 100 },
+    { field: "E", headerName: "E", resizable: true, width: 100, flex: 1 }
+  ]
+});
+```
+
+Codesandbox 演示
+
+<Codesandbox
+  id="installation-h8mwf"
+  title="installation"
+/>
+
+### 一个完整一些的例子
+
+这是一个最常见的表格演示。这个示例包含了 1000 行和 20 列数据，并体现了以下表格特性：
+
+- 基本网格和交互
+- 列分组
+- 类似 Excel 的范围选择
+- 类似 Excel 的下拉填充
+- 右键菜单
+- 表头菜单
+- 冻结列
+- 冻结行
+
+<Codesandbox
+  id="quick-look-unbru"
+  title="quick-look"
+/>
+
+### 必填选项
+
+#### columns
+
+`columns` 定义了网格的列，类型是一组 [`ColumnDef`](./grid-options#列定义)，你也可以像示例一样为列设置分组。
+列分组的 `id` 并不是必须的，因为如果没有默认值的话我们会自动生成，但你必须为列设置唯一的 `field` 选项来区分不同的列。
+
+#### rows
+
+`rows` 是网格默认的数据，类型为一组 [`RowData`](./grid-options#RowData)，你必须为每一行数据设置一个唯一的 `id`。
+
+### 可选选项
+
+你可以在[选项](./grid-options)页面找到所有网格的定义参数。

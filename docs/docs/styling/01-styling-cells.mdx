@@ -1,0 +1,80 @@
+---
+title: 单元格样式
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+自定义单元格样式是通过列定义在列级别完成的。可以通过以下方式实现自定义单元格的样式：
+
+- Cell Style: 为单元格提供 CSS 样式。
+- Cell Class: 为单元格提供 CSS 类。
+
+## Cell Style
+
+可以通过以下方式为网格中的单元格添加 CSS 样式：
+
+### cellStyle
+
+`cellStyle` 用于直接向单元格提供 CSS 样式（不使用类）。 值为键（样式名称）和值（样式值）的对象。
+
+```typescript
+export interface ColumnOptions {
+    ...
+    // an object of css values for a particular cell.
+    cellStyle?: JSXInternal.CSSProperties;
+    ...
+}
+```
+
+### getCellStyle
+
+`cellStyle` 的回调版本，可用于分别为不同单元格设置不同样式。 函数应该返回一个 CSS 值的对象。
+
+```typescript
+export interface ColumnOptions {
+    ...
+    // callback version of property cellStyle to set style for a particular cell.
+    // function should return an object of CSS values.
+    getCellStyle?: (params: CellClassParams) => JSXInternal.CSSProperties;
+    ...
+}
+```
+
+### 示例
+
+<Codesandbox id="cell-style-neorl" title="cell-style" />
+
+## Cell Class
+
+可以通过以下方式为网格中的单元格添加 CSS 类：
+
+### cellClass
+
+为该列中的单元格提供一个 CSS 类。值是字符串数组（CSS 类数组）。
+
+```typescript
+export interface ColumnOptions {
+    ...
+    // class to use for the cell. can be an array of strings.
+    cellClass?: string[];
+    ...
+}
+```
+
+### getCellClass
+
+`cellClass` 的回调版本，可用于分别为不同单元格设置不同类。 函数应返回字符串数组（类名数组）。
+
+```typescript
+export interface ColumnOptions {
+    ...
+    // callback version of property cellClass to set class(es) for a particular cell.
+    // function should return an array of strings (array of class names).
+    getCellClass?: (params: CellClassParams) => string[];
+    ...
+}
+```
+
+### 示例
+
+<Codesandbox id="cell-class-0ovvh" title="cell-class" />
