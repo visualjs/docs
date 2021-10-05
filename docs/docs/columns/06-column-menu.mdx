@@ -7,7 +7,7 @@ import Codesandbox from '@site/src/components/Codesandbox';
 在网格选项中可以通过 `getColumnMenuItems` 属性为列设置菜单。`getColumnMenuItems` 属性的值是一个回调函数，原型为：
 
 ```typescript
-(params: GetColumnMenuItemsParams) => MenuItem[];
+(params: GetColumnMenuItemsParams) => MenuItem[] | undefined;
 ```
 
 `GetColumnMenuItemsParams` 是回调的参数：
