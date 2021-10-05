@@ -1,0 +1,17 @@
+---
+title: 列分组
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+我们允许对列进行多级分组，并且可以根据需要对组进行折叠和打开以此隐藏一部分列。
+
+将树层次结构中的列提供给网格来完成对列的分组。
+
+下列的示例展示了分组的使用，请注意以下内容：
+
+1. `Group 01` 由于没有指定 `collapsible`，因此不可以切换折叠状态。
+2. `Group 02` 和 `Group 02-01` 可以切换折叠状态。
+3. `Group 02-01` 由于设置了 `collapsed` 属性，因此默认是折叠状态。 
+
+<Codesandbox id="column-group-tg9sx" />

@@ -1,0 +1,68 @@
+---
+title: 列尺寸
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+## 启用列尺寸调整
+
+可以通过设置列选项的 `resizable` 属性来启用或者禁用列的尺寸调整。
+
+下面的代码片段允许通过显式设置每一列来调整除 `address` 列之外的所有列的大小。
+
+```typescript
+new Grid(container, {
+  ...
+  columns: [
+    { field: 'name', resizable: true },
+    { field: 'age', resizable: true },
+    { field: 'address' },
+  ]
+  ...
+});
+```
+
+下面的代码片段通过默认列定义为所有列启用 `resizable`，并通过显示设置 `resizable` 为 `false` 来禁用 `address` 列的尺寸调整。
+
+```typescript
+new Grid(container, {
+  ...
+  defaultColumnOption: {
+    resizable: true,
+  },
+  columns: [
+    { field: 'name' },
+    { field: 'age' },
+    { field: 'address', resizable: false },
+  ]
+  ...
+});
+```
+
+## 弹性布局
+
+通常我们需要设置一列或多列来填充网格中的整个可用的空白空间。对于这种情况，可以使用列选项的 `flex` 属性配置。某些列可以使用常规 `width` 配置固定宽度，而其他列将具有 `flex` 配置。
+
+弹性布局调整大小的工作原理是将网格中的剩余空间按其 `flex` 值的比例分配给所有 `flex` 列。例如，假设网格的总宽度为 `450` 像素，并且它有三列：第一列带有 `width: 150;` 第二个列带有 `flex: 1;` 第三个列带有 `flex: 2`。则第一列宽 `150` 像素，剩余 `300` 像素。第三列（`flex: 2`）的大小是第二列（`flex: 1`）的两倍。所以最终尺寸将是：150px、100px、200px。
+
+:::info
+
+`flex` 和 `width` 属性不能同时使用，如果同时使用的话 `flex` 将优先于 `width`。
+
+:::
+
+:::info
+
+如果列启用了 `flex` 布局则 `resizable` 将被禁用。
+
+:::
+
+### 示例
+
+下面的示例提现了列尺寸调整和弹性布局，请注意以下事项：
+
+1. `C` 列 `resizable` 为 `false`，因此 `C` 列不能调整大小。
+2. `D` 和 `E` 列使用了 `flex` 布局，`D` 设置为 `flex: 1`，`E` 设置为 `flex: 2`，因此 `D` 和 `E` 将会占据网格剩余空间，且 `E` 是 `D` 的两倍宽。
+3. `D` 和 `E` 由于使用 `flex` 布局，因此不能调整宽度。
+
+<Codesandbox id="column-sizing-wv83k" />

@@ -1,0 +1,45 @@
+---
+title: 列菜单
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+在网格选项中可以通过 `getColumnMenuItems` 属性为列设置菜单。`getColumnMenuItems` 属性的值是一个回调函数，原型为：
+
+```typescript
+(params: GetColumnMenuItemsParams) => MenuItem[];
+```
+
+`GetColumnMenuItemsParams` 是回调的参数：
+
+```typescript
+export interface GetColumnMenuItemsParams {
+    // the column that was clicked
+    column: string;
+    grid: Grid;
+}
+```
+
+`MenuItem` 是菜单项：
+
+```typescript
+export interface MenuItem {
+    // is it a dividing line
+    separator?: boolean;
+    // disabled menu items
+    disabled?: boolean;
+    // display name
+    name?: string;
+    // icon
+    icon?: string;
+    // callback after the menu item is clicked
+    action?: () => void;
+    subMenus?: MenuItem[];
+}
+```
+
+下面的示例演示了一个拥有列菜单的网格，并提现了二级菜单、分割线等特性：
+
+<Codesandbox id="column-menu-jvjs4" />
+
+网格中可用的所有图标，请看[图标](../others/icons.mdx)小节。

@@ -1,0 +1,92 @@
+---
+title: 列定义
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+网格中的列使用一组列选项 ([`ColumnsDef`](../getting-started/02-grid-options.mdx#列定义)) 进行定义。 列在网格中的顺序根据列选项的顺序。
+
+## 基本定义
+
+下面的示例显示了一个定义了 5 列的简单网格：
+
+```typescript
+new Grid(container, {
+  ...
+  columns: [
+    { field: "A" },
+    { field: "B" },
+    { field: "C" },
+    { field: "D" },
+    { field: "E" }
+  ]
+  ...
+});
+```
+:::info
+
+`ColumnOptions` 中的 `field` 属性将作为列的 `id` 来区分不同的列，因此 `field` 属性是必须指定且不能重复的。有关列的所有属性的列表，请参阅[列选项](../getting-started/02-grid-options.mdx#列选项)。
+
+:::
+
+## 列分组
+
+如果你希望对列进行分组，则可以将它们作为子项，如下所示：
+
+```typescript
+new Grid(container, {
+  ...
+  columns: [
+    {
+        headerName: "Group 01", children: [
+            { field: "A" },
+            { field: "B" },
+            { field: "C" }
+        ]
+    },
+    {
+        headerName: "Group 02", children: [
+            { field: "D" },
+            { field: "E" }
+        ]
+    },
+  ]
+  ...
+});
+```
+
+关于列的分组，[列分组](./03-column-group.mdx)小节进行了更详细的解释。
+
+## 覆盖列选项
+
+### 默认选项
+
+在网格选项中可以通过 `defaultColumnOption` 属性为全局的列设置默认选项。
+
+如下面的示例，我们为每一列设置了默认的 `resizable` 和宽度，但 `B` 这一列覆盖掉了默认的 `resizable` 属性，因此 `B` 这一列是不能调整宽度的，还有 `D` 的宽度也被重置为 `200`。
+
+```typescript
+new Grid(container, {
+  ...
+  defaultColumnOption: {
+    resizable: true,
+    width: 100,
+  },
+  columns: [
+    { field: "A" },
+    { field: "B", resizable: false },
+    { field: "C" },
+    { field: "D", width: 200 },
+    { field: "E" }
+  ]
+  ...
+});
+```
+
+### 列选项选择器
+
+你可以在列选项中设置 `columnOptionsSelector` 属性来为同一列的不同行应用不同的列选项。
+
+下面的示例通过对 `C` 列设置 `columnOptionsSelector`，对 `C-02` 单独设置了 `readonly` 属性和 `cellStyle`。
+
+<Codesandbox id="column-options-selector-0hxie" />
