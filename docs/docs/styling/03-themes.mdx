@@ -1,3 +1,92 @@
 ---
 title: 网格主题
 ---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+网格的主题是通过 css 自定义属性来实现的。下面是网格自带的默认主题：
+
+```css
+.v-grid-default-theme {
+    /* custom variables */
+
+    /* global */
+    --primary-color: #0091ea;
+    --border-color: #bdc3c7;
+    --border-radius: none;
+    --default-font-size: 12px;
+    --foreground-color: #333;
+    --background-color: #ffffff;
+    --loading-background: rgba(255, 255, 255, 0.8);
+    --loading-forground: #0091ea;
+    /* headers */
+    --header-background-color: #f8f8f8;
+    --header-foreground-color: rgba(0, 0, 0, 0.5);
+    --header-resizer-active-color: var(--primary-color);
+    /* columns */
+    --column-pinned-right-shadow: rgba(0, 0, 0, 0.05) -4px 0px 4px;
+    --column-pinned-left-shadow: rgba(0, 0, 0, 0.05) 4px 0px 4px;
+    /* rows */
+    --row-background: var(--background-color);
+    --row-stripe-background: #f9fafb;
+    --row-hover-background: #ecf0f1;
+    --row-select-background: rgba(0, 145, 234, 0.1);
+    --rows-pinned-top-shadow: rgba(0, 0, 0, 0.05) 0px 5px 5px;
+    --rows-pinned-bottom-shadow: rgba(0, 0, 0, 0.05) 0px -5px 5px;
+    /* cells */
+    --cell-padding: 0 12px;
+    --cell-selected-background: rgba(0, 145, 234, 0.2);
+    --cell-selected-boundary-color: var(--primary-color);
+    --cell-filling-background: rgba(245, 223, 25, 0.2);
+    --cell-filling-boundary-color: #f8b013;
+    --cell-editing-popup-background: #fafafa;
+    --cell-editing-popup-border: none;
+    /* menus */
+    --cell-menu-padding: 4px 0;
+    /* z-index */
+    --pinned-z-index: 1;
+    --pinned-body-z-index: 2;
+    --horizontal-scroll-z-index: 1;
+    --cell-editing-z-index: 2;
+    --menu-z-index: 4;
+    --column-z-index: 2;
+    --column-resizer-z-index: 2;
+    --loading-z-index: 9;
+
+    /* global styles */
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue",
+        sans-serif;
+}
+
+.v-grid-default-theme [class^="v-grid-"],
+.v-grid-default-theme [class^="v-grid-"]:focus,
+.v-grid-default-theme [class^="v-grid-"]:after,
+.v-grid-default-theme [class^="v-grid-"]:before {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.v-grid-default-theme [class^="v-grid-"]::selection {
+    background-color: rgba(0, 145, 234, 0.2);
+}
+```
+
+使用的时候只需要指定 `v-grid-default-theme` 类名就可以了。
+
+```html
+<div id="app" class="v-grid-default-theme"></div>
+```
+
+你可以通过修改这些变量来创建自己的主题。
+
+下面是网格库内置的主题：
+
+| 名称                        | 文件名称           |
+| --------------------------- | ------------------ |
+| v-grid-default-theme        | default.css        |
+| v-grid-default-dark-theme   | default-dark.css   |
+| v-grid-energetic-theme      | energetic.css      |
+| v-grid-energetic-dark-theme | energetic-dark.css |
+
+
+<Codesandbox id="theme-ellnp" title="theme" />
