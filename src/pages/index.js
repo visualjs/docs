@@ -9,8 +9,8 @@ import HomepageFeatures from '../components/HomepageFeatures';
 function Share() {
   return (
     <>
-      <a href="https://www.npmjs.com/package/visual-grid" title="version">
-        <img src="https://img.shields.io/npm/v/visual-grid.svg?style=for-the-badge&color=%230e83cd" />
+      <a href="https://www.npmjs.com/package/@visualjs/grid" title="version">
+        <img src="https://img.shields.io/npm/v/@visualjs/grid.svg?style=for-the-badge&color=%230e83cd" />
       </a>
       <a href="https://github.com/visualjs/grid/issues" title="issues">
         <img src="https://img.shields.io/github/issues/visualjs/grid?style=for-the-badge&color=%230e83cd" />
