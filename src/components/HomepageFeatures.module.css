@@ -3,6 +3,10 @@
   align-items: center;
   padding: 2rem 0;
   width: 100%;
+  border-top: 1px solid #dedede;
+  width: 80%;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 .featureSvg {
