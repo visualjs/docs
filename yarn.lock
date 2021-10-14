@@ -1892,10 +1892,10 @@
   resolved "https://registry.yarnpkg.com/@types/unist/-/unist-2.0.6.tgz#250a7b16c3b91f672a24552ec64678eeb1d3a08d"
   integrity sha512-PBjIUxZHOuj0R15/xuwJYjFi+KZdNFrehocChv4g5hu6aFroHue8m0lBP0POdK2nKzbw0cgV1mws8+V/JAcEkQ==
 
-"@visualjs/grid@^1.1.1":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@visualjs/grid/-/grid-1.1.1.tgz#4829fc5bf584ed24a6c7d527aea4dfce130d70aa"
-  integrity sha512-xpV6jaoIfWc/EY7ojXmNuGve/fo+peX4nrSJ25WxrCDYV/BHFxR3WZIEQCQuEc2EkOL/1L1QXvd1B2k/UGZHhA==
+"@visualjs/grid@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@visualjs/grid/-/grid-1.1.2.tgz#0537dfd71ba92be89eea59c552c1f3fcaf18ff40"
+  integrity sha512-N4iPbSMsqd3v8rvbYIfZ2Zcocn9VjBg4pF7C733DmbafZ97IBiLXuFD6X+9IW00zDXgRINHfAjzJcfrFadN3nw==
 
 "@webassemblyjs/ast@1.11.1":
   version "1.11.1"
