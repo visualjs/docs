@@ -61,8 +61,8 @@ public copySelection(): void;
 
 ### pasteFromClipboard
 
-解析剪贴板中的数据，并按照顺序设置选中的单元格数据。
+解析剪贴板中的数据，并按照顺序设置选中的单元格数据。如果 `plainText` 参数为 `true` 则不会解析数据格式。
 
 ```typescript
-public pasteFromClipboard(): void;
+public pasteFromClipboard(plainText = false): void
 ```

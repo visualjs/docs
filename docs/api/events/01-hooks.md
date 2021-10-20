@@ -5,49 +5,49 @@ title: Hooks
 ### beforeCellDbClicked
 
 ```typescript
-beforeCellDbClicked: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+beforeCellDbClicked: (pos: CellPosition, ev: MouseEvent, cell: HTMLDivElement) => boolean | void;
 ```
 
 ### afterCellDbClicked
 
 ```typescript
-afterCellDbClicked: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+afterCellDbClicked: (pos: CellPosition, ev: MouseEvent, cell: HTMLDivElement) => boolean | void;
 ```
 
 ### beforeCellMouseDown
 
 ```typescript
-beforeCellMouseDown: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+beforeCellMouseDown: (pos: CellPosition, ev: MouseEvent, cell: HTMLDivElement) => boolean | void;
 ```
 
 ### afterCellMouseDown
 
 ```typescript
-afterCellMouseDown: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+afterCellMouseDown: (pos: CellPosition, ev: MouseEvent, cell: HTMLDivElement) => boolean | void;
 ```
 
 ### beforeCellMouseMove
 
 ```typescript
-beforeCellMouseMove: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+beforeCellMouseMove: (pos: CellPosition, ev: MouseEvent, cell: HTMLDivElement) => boolean | void;
 ```
 
 ### afterCellMouseMove
 
 ```typescript
-afterCellMouseMove: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+afterCellMouseMove: (pos: CellPosition, ev: MouseEvent, cell: HTMLDivElement) => boolean | void;
 ```
 
 ### beforeFillerMouseDown
 
 ```typescript
-beforeFillerMouseDown: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+beforeFillerMouseDown: (pos: CellPosition, ev: MouseEvent, filler: HTMLDivElement) => boolean | void;
 ```
 
 ### afterFillerMouseDown
 
 ```typescript
-afterFillerMouseDown: (pos: CellPosition, ev: MouseEvent) => boolean | void;
+afterFillerMouseDown: (pos: CellPosition, ev: MouseEvent, filler: HTMLDivElement) => boolean | void;
 ```
 
 ### beforeFilling

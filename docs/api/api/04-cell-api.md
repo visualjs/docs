@@ -55,7 +55,7 @@ public getCellValueByCoord(coord: Coordinate): any;
 根据单元格位置设置单元格的值。
 
 ```typescript
-public setCellValue(row: string, column: string, value: any): void;
+public setCellValue(row: string, column: string, value: any, force = false): void;
 ```
 
 ### setCellValueByCoord
