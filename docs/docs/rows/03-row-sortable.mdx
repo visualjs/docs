@@ -6,4 +6,8 @@ import Codesandbox from '@site/src/components/Codesandbox';
 
 > Since v1.1.4
 
+你可以在列选项中通过启用 `rowDragable` 选项来启用某一列的行拖拽功能。`rowDragable` 接收一个 `boolean` 值或者一个 `((param: CellParams) => boolean)` 回调来为特殊的行启用或禁用行拖拽功能。
 
+下面的示例在 A 列中所有单元格启用了行拖拽排序，但是在 C 列，只有奇数行的单元格启用了行拖拽功能。
+
+<Codesandbox id="row-sortable-z7guq" title="row-sortable" />
