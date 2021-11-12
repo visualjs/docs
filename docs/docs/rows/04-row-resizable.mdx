@@ -2,4 +2,27 @@
 title: 行高调整
 ---
 
+import Codesandbox from '@site/src/components/Codesandbox';
+
 > Since v1.1.5
+
+### 设置行高
+
+我们支持将 `GridOptions` 中的 `rowHeight` 设置为固定的数值来为所有行设置统一的高度，也支持将 `rowHeight` 设置为 `(id: string) => number` 来为不同的行设置不同的行高。
+
+```typescript
+new Grid(container, {
+  ...
+  // default row height, default is 28
+  rowHeight: number | ((id: string) => number);
+  ...
+});
+```
+
+### 动态调整行高
+
+当 `GridOptions` 中的 `rowResizable` 设置为 `true` 时，当鼠标放在单元格底部时就可以通过拖拽调整行高。
+
+下面是一个调整行高的综合示例。
+
+<Codesandbox id="row-resizable-77j1w" />
