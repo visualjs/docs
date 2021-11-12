@@ -1,0 +1,48 @@
+---
+title: 列排序
+---
+
+import Codesandbox from '@site/src/components/Codesandbox';
+
+> Since v1.1.4
+
+## 启用列尺寸调整
+
+可以通过设置列选项的 `sortable` 属性来启用或者禁用列的排序。
+
+下面的代码片段允许通过显式设置每一列来启用除 `address` 列之外的所有列的排序。
+
+```typescript
+new Grid(container, {
+  ...
+  columns: [
+    { field: 'name', sortable: true },
+    { field: 'age', sortable: true },
+    { field: 'address' },
+  ]
+  ...
+});
+```
+
+下面的代码片段通过默认列定义为所有列启用 `sortable`，并通过显示设置 `sortable` 为 `false` 来禁用 `address` 列的排序。
+
+```typescript
+new Grid(container, {
+  ...
+  defaultColumnOption: {
+    sortable: true,
+  },
+  columns: [
+    { field: 'name' },
+    { field: 'age' },
+    { field: 'address', sortable: false },
+  ]
+  ...
+});
+```
+
+### 示例
+
+下面的示例提现了列排序，你可以通过拖拽列标题左边的按钮来进行列的排序调整：
+
+<Codesandbox id="column-sortable-j3rxd" />
