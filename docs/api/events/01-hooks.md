@@ -86,16 +86,52 @@ beforeContextMenuShow: (pos: CellPosition, items: MenuItem[]) => boolean | void;
 afterContextMenuShow: (pos: CellPosition, items: MenuItem[]) => boolean | void;
 ```
 
-### beforeColumnResizing
+### beforeColumnResizingStart
 
 ```typescript
-beforeColumnResizing: (column: string, width: number) => boolean | void;
+beforeColumnResizingStart: (column: string, width: number) => boolean | void;
 ```
 
-### afterColumnResizing
+### afterColumnResizingStart
 
 ```typescript
-afterColumnResizing: (column: string, width: number) => boolean | void;
+afterColumnResizingStart: (column: string, width: number) => boolean | void;
+```
+
+### beforeColumnResizingEnd
+
+```typescript
+beforeColumnResizingEnd: (column: string, width: number) => boolean | void;
+```
+
+### afterColumnResizingEnd
+
+```typescript
+afterColumnResizingEnd: (column: string, width: number) => boolean | void;
+```
+
+### beforeRowResizingStart
+
+```typescript
+beforeRowResizingStart: (row: string, height: number) => boolean | void;
+```
+
+### afterRowResizingStart
+
+```typescript
+afterRowResizingStart: (row: string, height: number) => boolean | void;
+```
+
+### beforeRowResizingEnd
+
+```typescript
+beforeRowResizingEnd: (row: string, height: number) => boolean | void;
+```
+
+### afterRowResizingEnd
+
+```typescript
+afterRowResizingEnd: (row: string, height: number) => boolean | void;
 ```
 
 ### beforeKeyDown
@@ -158,3 +194,50 @@ beforePaste: (text: string) => boolean | void;
 afterPaste: (text: string) => boolean | void;
 ```
 
+### beforeRowDragStart
+
+```typescript
+beforeRowDragStart: (startRow: string) => boolean | void;
+```
+
+### afterRowDragStart
+
+```typescript
+afterRowDragStart: (startRow: string) => boolean | void;
+```
+
+### beforeRowDragEnd
+
+```typescript
+beforeRowDragEnd: (startRow: string, endRow: string) => boolean | void;
+```
+
+### afterRowDragEnd
+
+```typescript
+afterRowDragEnd: (startRow: string, endRow: string) => boolean | void;
+```
+
+### beforeColumnDragStart
+
+```typescript
+beforeColumnDragStart: (startColumn: string) => boolean | void;
+```
+
+### afterColumnDragStart
+
+```typescript
+afterColumnDragStart: (startColumn: string) => boolean | void;
+```
+
+### beforeColumnDragEnd
+
+```typescript
+beforeColumnDragEnd: (startColumn: string, endColumn: string) => boolean | void;
+```
+
+### afterColumnDragEnd
+
+```typescript
+afterColumnDragEnd: (startColumn: string, endColumn: string) => boolean | void;
+```
